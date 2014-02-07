@@ -5,6 +5,7 @@
 #include <boost/noncopyable.hpp>
 #include <assert.h>
 #include <pthread.h>
+#include <base/Exception.h>
 
 #ifdef CHECK_PTHREAD_RETURN_VALUE
 
@@ -51,6 +52,9 @@ class MutexLock : boost::noncopyable {
 
   ~MutexLock() {
     assert(holder_ == 0);
+    if (holder_ != 0 ) {
+      throw muduo::Exception("oops");
+    }
     MCHECK(pthread_mutex_destroy(&mutex_));
   }
 

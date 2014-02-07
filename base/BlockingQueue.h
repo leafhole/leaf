@@ -48,7 +48,7 @@ class BlockingQueue : boost::noncopyable {
   Condition notEmpty_;
   std::deque<T> queue_;
   
-} // end of class BlockingQueue
+}; // end of class BlockingQueue
 
 } // end of namespace muduo
 

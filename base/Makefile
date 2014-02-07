@@ -1,4 +1,4 @@
-all: logstream_unittest logfile_unittest logging_unittest atomic_unittest backtrace_unittest thread_unittest threadpool_unittest
+all: logstream_unittest logfile_unittest logging_unittest atomic_unittest backtrace_unittest thread_unittest threadpool_unittest asynclogging_main asynclogging_unittest
 
 clean:
 	rm -f *.o
@@ -22,20 +22,25 @@ atomic_unittest: atomic_unittest.o
 logstream_unittest: LogStream.o LogStream_unittest.o
 	$(CC) -o $@ $^ $(LIBFLAG)
 
-logfile_unittest: CurrentThread.o LogFile.o LogFile_unittest.o FileUtil.o LogStream.o ProcessInfo.o Timestamp.o
+logfile_unittest: CurrentThread.o LogFile.o LogFile_unittest.o FileUtil.o LogStream.o ProcessInfo.o Timestamp.o Exception.o
 	$(CC) -v -o $@ $^ $(LIBFLAG) -g
 
 
-logging_unittest: CurrentThread.o LogFile.o Logging.o Logging_unittest.o FileUtil.o LogStream.o ProcessInfo.o Timestamp.o
+logging_unittest: CurrentThread.o LogFile.o Logging.o Logging_unittest.o FileUtil.o LogStream.o ProcessInfo.o Timestamp.o Exception.o
 	$(CC) -v -o $@ $^ $(LIBFLAG) -g
 
-backtrace_unittest: backtrace_unittest.o
+backtrace_unittest: backtrace_unittest.o 
 	$(CC) -v -o $@ $^ $(LIBFLAG) -g
 
-thread_unittest: Thread_unittest.o Thread.o Exception.o Logging.o LogStream.o LogFile.o FileUtil.o TimeStamp.o ProcessInfo.o
+thread_unittest: Thread_unittest.o Thread.o Exception.o Logging.o LogStream.o LogFile.o FileUtil.o Timestamp.o ProcessInfo.o Exception.o
 	$(CC) -v -o $@ $^ $(LIBFLAG) -g
 
-threadpool_unittest: ThreadPool_unittest.o ThreadPool.o CountDownLatch.o Thread.o Exception.o Logging.o LogStream.o LogFile.o FileUtil.o TimeStamp.o ProcessInfo.o
+threadpool_unittest: ThreadPool_unittest.o ThreadPool.o CountDownLatch.o Thread.o Exception.o Logging.o LogStream.o LogFile.o FileUtil.o Timestamp.o ProcessInfo.o Exception.o
+	$(CC) -v -o $@ $^ $(LIBFLAG) -g
+
+asynclogging_unittest: AsyncLogging_unittest.o AsyncLogging.o Condition.o CountDownLatch.o Thread.o Exception.o Logging.o LogStream.o LogFile.o FileUtil.o Timestamp.o ProcessInfo.o Exception.o
+	$(CC) -v -o $@ $^ $(LIBFLAG) -g
+asynclogging_main: AsyncLogging_main.o AsyncLogging.o Condition.o CountDownLatch.o Thread.o Exception.o Logging.o LogStream.o LogFile.o FileUtil.o Timestamp.o ProcessInfo.o Exception.o
 	$(CC) -v -o $@ $^ $(LIBFLAG) -g
 
 %.o:%.cc

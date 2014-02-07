@@ -25,7 +25,7 @@ class Condition : boost::noncopyable {
   }
 
   // return true if time out, false otherwise
-  bool waitForSecond(int seconds);
+  bool waitForSeconds(int seconds);
 
   void notify() {
     MCHECK(pthread_cond_signal(&pcond_));
