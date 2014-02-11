@@ -3,6 +3,9 @@
 #include <assert.h>
 #include <unistd.h>
 #include <base/Timestamp.h>
+#ifndef __MACH__
+#include <sys/syscall.h>
+#endif
 
 //using namespace muduo;
 
