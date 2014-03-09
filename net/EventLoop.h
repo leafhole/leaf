@@ -97,12 +97,6 @@ class EventLoop : boost::noncopyable {
   /// Safe to call from other threads.
   ///
   void cancel(TimerId timerId);
-#ifdef __GXX_EXPERIMENTAL_CXX0X__
-
-  TimerId runAt(const Timestamp& time, TimeCallback& cb);
-  TimerId runAfter(double delay, TimeCallback& cb);
-  TimerId runEvery(double interval, TimeCallback& cb);  
-  #endif
 
   // internal usage
   void wakeup();

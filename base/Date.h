@@ -22,7 +22,7 @@ class Date :  public leaf::copyable {
     ///
     /// Constructs an invalid Date.
     ///
-    Data()
+    Date()
       : julianDayNumber_(0) {
     }
 
@@ -35,8 +35,8 @@ class Date :  public leaf::copyable {
     ///
     /// Constructs a Date from Julian Day Number.
     ///
-    explicit Date(int julianDayNum)
-      : julianDayNum_(julianDayNum_)
+    explicit Date(int julianDayNumber)
+      : julianDayNumber_(julianDayNumber)
     {}
 
     ///
@@ -47,10 +47,10 @@ class Date :  public leaf::copyable {
     // default copy/assignment/dtor are Okay
 
     void swap(Date& that) {
-      std::swap(julianDayNum_, that.julianDayNum_);
+      std::swap(julianDayNumber_, that.julianDayNumber_);
     }
 
-    bool valid() const { return julianDayNum_ > 0; }
+    bool valid() const { return julianDayNumber_ > 0; }
 
     ///
     /// Convert to yyyy-mm-dd format
@@ -60,34 +60,34 @@ class Date :  public leaf::copyable {
     struct YearMonthDay yearMonthDay() const;
 
     int year() const {
-      return yearMonthDay().year();
+      return yearMonthDay().year;
     }
     
     int month() const {
-      return yearMonthDay().month();
+      return yearMonthDay().month;
     }
     
     int day() const {
-      return yearMonthDay().day();
+      return yearMonthDay().day;
     }
 
     // [0, 1, ..., 6] => [Sunday, Monday, ..., Saturday]
     int weekDay() const {
-      return (julianDayNum_ + 1) % kDaysPerWeek;
+      return (julianDayNumber_ + 1) % kDaysPerWeek;
     }
 
-    int julianDayNum_() const { return julianDayNum_; }    
+    int julianDayNum() const { return julianDayNumber_; }    
 
   private:
     int julianDayNumber_;
 }; // end of class Date
 
 inline bool operator < (Date x, Date y) {
-  return x.julianDayNumber() < y.julianDayNumber();
+  return x.julianDayNum() < y.julianDayNum();
 }
 
 inline bool operator == (Date x, Date y) {
-  return x.julianDayNumber() == y.julianDayNumber();
+  return x.julianDayNum() == y.julianDayNum();
 }
  
 } // end of namespace leaf

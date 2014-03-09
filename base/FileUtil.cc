@@ -102,8 +102,8 @@ template int FileUtil::SmallFile::readToString(
 				     string* content,
 				     int64_t*, int64_t*, int64_t*);
 
-#ifndef MUDUO_STD_STRING
-template int FileUtil::read(StringPiece filename,
+#ifndef LEAF_STD_STRING
+template int FileUtil::readFile(StringPiece filename,
 			    int maxSize,
 			    std::string* content,
 			    int64_t*, int64_t*, int64_t*);

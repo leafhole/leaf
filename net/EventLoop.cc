@@ -190,11 +190,11 @@ void EventLoop::queueInLoop(Functor&& cb) {
   }
 }
 
-TimerId EventLoop::runAt(const Timestamp& time, TimerCallback&& cb) {
+TimerId EventLoop::runAt(const Timestamp& time, const TimerCallback&& cb) {
   return timerQueue_->addTimer(std::move(cb), time, 0.0);
 }
 
-TimerId EventLoop::runAfter(const Timestamp& time, TimerCallback&& cb) {
+TimerId EventLoop::runAfter(const Timestamp& time, const TimerCallback&& cb) {
   Timerstamp time(addTime(Timestamp::now(), delay));
   return runAt(time, cb);		  
 }

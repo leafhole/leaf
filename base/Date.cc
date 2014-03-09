@@ -1,8 +1,8 @@
 #include <base/Date.h>
 #include <stdio.h>
 
-//namespace leaf {
-//namespace detail {
+namespace leaf {
+namespace detail {
 
 char require_32_bit_integer_at_least[sizeof(int) >= sizeof(int32_t) ? 1 : -1] ;
 
@@ -33,7 +33,7 @@ struct Date::YearMonthDay getYearMonthDay(int julianDayNumber) {
 
 } // end of namespace detail
 
-const int Date::kJuliandayof1970_01_01 = detail::getJulianDayNumber(1970, 1, 1);
+const int Date::kJulianDayOf1970_01_01 = detail::getJulianDayNumber(1970, 1, 1);
 
 
 } // end of namespace leaf

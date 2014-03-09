@@ -83,7 +83,7 @@ void Channel::handleEventWithGuard(Timestamp receiveTime) {
   eventHandling_ = false;
 }
 
-string Channel::reventsToString() const {
+leaf::string Channel::reventsToString() const {
   std::ostringstream oss;
   oss << fd_ << ": ";
   if (revents_ & POLLIN) {
