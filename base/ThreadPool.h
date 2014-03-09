@@ -12,7 +12,7 @@
 
 #include <deque>
 
-namespace muduo {
+namespace leaf {
 class ThreadPool : boost::noncopyable {
  public:
   typedef boost::function<void ()> Task;
@@ -40,13 +40,13 @@ class ThreadPool : boost::noncopyable {
   Condition notEmpty_;
   Condition notFull_;
   string name_;
-  boost::ptr_vector<muduo::Thread> threads_;
+  boost::ptr_vector<leaf::Thread> threads_;
   std::deque<Task> queue_;
   size_t maxQueueSize_;
   bool running_;
 }; // end of class ThreadPool
  
-} // end of namespace muduo
+} // end of namespace leaf
 
 
 #endif //  BASE_THREADPOOL_H

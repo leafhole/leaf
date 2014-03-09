@@ -3,7 +3,7 @@
 #include <time.h>
 #include <sys/time.h>
 
-bool muduo::Condition::waitForSeconds(int seconds) {
+bool leaf::Condition::waitForSeconds(int seconds) {
 
   struct timespec abstime;
 

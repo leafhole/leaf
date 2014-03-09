@@ -1,11 +1,11 @@
-#ifndef BASE_COPYABOE_H
-#define BASE_COPYABOE_H
+#ifndef BASE_COPYABLE_H
+#define BASE_COPYABLE_H
 
-namespace muduo{
+namespace leaf{
 class copyable {
 };
-};
+}
 
 
 
-#endif // BASE_COPYABOE_H
+#endif // BASE_COPYABLE_H

@@ -7,9 +7,9 @@
 #include <assert.h>
 #include <boost/static_assert.hpp>
 
-using muduo::FileUtil::SmallFile;
-using namespace muduo::FileUtil;
-using namespace muduo;
+using leaf::FileUtil::SmallFile;
+using namespace leaf::FileUtil;
+using namespace leaf;
 
 SmallFile::SmallFile(StringPiece filename) 
   : fd_(::open(filename.data(), O_RDONLY | O_CLOEXEC)),

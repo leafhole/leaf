@@ -16,7 +16,7 @@
 #include <linux/unistd.h>
 #endif
 
-namespace muduo {
+namespace leaf {
 namespace CurrentThread {
   __thread int t_cachedTid = 0;
   __thread char  t_tidString[32];
@@ -37,8 +37,8 @@ pid_t gettid() {
 #endif
 
 void afterFork() {
-  muduo::CurrentThread::t_cachedTid = 0;
-  muduo::CurrentThread::t_threadName = "main";
+  leaf::CurrentThread::t_cachedTid = 0;
+  leaf::CurrentThread::t_threadName = "main";
   CurrentThread::tid();
   // no need to call phtread_atfork(NULL, NULL, &afterFork);
 }
@@ -46,7 +46,7 @@ void afterFork() {
   class ThreadNameInitializer {
   public:
     ThreadNameInitializer() {
-      muduo::CurrentThread::t_threadName = "main";
+      leaf::CurrentThread::t_threadName = "main";
       CurrentThread::tid();
       pthread_atfork(NULL, NULL, &afterFork);
     }
@@ -54,7 +54,7 @@ void afterFork() {
 
   ThreadNameInitializer init;
   struct ThreadData {
-    typedef muduo::Thread::ThreadFunc ThreadFunc;
+    typedef leaf::Thread::ThreadFunc ThreadFunc;
     ThreadFunc func_;
     string name_;
     boost::weak_ptr<pid_t> wkTid_;
@@ -68,7 +68,7 @@ void afterFork() {
     }
 
     void runInThread() {
-      pid_t tid = muduo::CurrentThread::tid();
+      pid_t tid = leaf::CurrentThread::tid();
 
       boost::shared_ptr<pid_t> ptid = wkTid_.lock();
       if (ptid) {
@@ -76,23 +76,23 @@ void afterFork() {
 	ptid.reset();
       }
 
-      muduo::CurrentThread::t_threadName = name_.c_str();
+      leaf::CurrentThread::t_threadName = name_.c_str();
       try {
 	func_(); // run
-	muduo::CurrentThread::t_threadName = "finished";
+	leaf::CurrentThread::t_threadName = "finished";
       } catch (const Exception& ex) {
-	muduo::CurrentThread::t_threadName = "crashed";
+	leaf::CurrentThread::t_threadName = "crashed";
 	fprintf(stderr, "exception caught in Thread %s\n", name_.c_str());
 	fprintf(stderr, "reason: %s\n", ex.what());
 	fprintf(stderr, "stack trace: %s\n", ex.stackTrace());
 	abort();
       } catch (const std::exception& ex) {
-	muduo::CurrentThread::t_threadName = "crashed";
+	leaf::CurrentThread::t_threadName = "crashed";
 	fprintf(stderr, "exception caught in Thread %s\n", name_.c_str());
 	fprintf(stderr, "reason: %s\n", ex.what());
 	abort();
       } catch (...) {
-	muduo::CurrentThread::t_threadName = "crashed";
+	leaf::CurrentThread::t_threadName = "crashed";
 	fprintf(stderr, "unknown exception caught in Thread %s\n", name_.c_str());
 	throw; // rethrow
       }
@@ -108,14 +108,14 @@ void afterFork() {
   
 }; // end of namespace detail
 
-} // end of namespace muduo 
+} // end of namespace leaf 
 
 
 
 
 
 
-void muduo::CurrentThread::cacheTid()
+void leaf::CurrentThread::cacheTid()
 {
   if (t_cachedTid == 0)
   {
@@ -125,12 +125,12 @@ void muduo::CurrentThread::cacheTid()
   }
 }
 
-bool muduo::CurrentThread::isMainThread()
+bool leaf::CurrentThread::isMainThread()
 {
   return tid() == ::getpid();
 }
 
-void muduo::CurrentThread::sleepUsec(int64_t usec)
+void leaf::CurrentThread::sleepUsec(int64_t usec)
 {
   struct timespec ts = { 0, 0 };
   ts.tv_sec = static_cast<time_t>(usec / Timestamp::kMicroSecondsPerSecond);
@@ -138,7 +138,7 @@ void muduo::CurrentThread::sleepUsec(int64_t usec)
   ::nanosleep(&ts, NULL);
 }
 
-using namespace muduo;
+using namespace leaf;
 
 AtomicInt32 Thread::numCreated_;
 

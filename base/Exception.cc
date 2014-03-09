@@ -3,7 +3,7 @@
 #include <execinfo.h>
 #include <stdlib.h>
 
-using namespace muduo;
+using namespace leaf;
 
 Exception::Exception(const char* msg)
   : message_(msg) {

@@ -7,7 +7,7 @@
 #include <time.h>
 #include <string.h>
 
-using namespace muduo;
+using namespace leaf;
 
 // not thread safe
 class LogFile::File : boost::noncopyable {

@@ -4,7 +4,7 @@
 #include <base/LogStream.h>
 #include <base/Timestamp.h>
 
-namespace muduo {
+namespace leaf {
 
 class Logger {
  public:
@@ -84,23 +84,23 @@ class Logger {
    return g_logLevel;
  }
 
-#define LOG_TRACE if (muduo::Logger::logLevel() <= muduo::Logger::TRACE) \
-   muduo::Logger(__FILE__, __LINE__, muduo::Logger::TRACE, __FUNCTION__).stream()
-#define LOG_DEBUG if (muduo::Logger::logLevel() <= muduo::Logger::DEBUG) \
-   muduo::Logger(__FILE__, __LINE__, muduo::Logger::DEBUG, __FUNCTION__).stream()
-#define LOG_INFO if (muduo::Logger::logLevel() <= muduo::Logger::INFO) \
-   muduo::Logger(__FILE__, __LINE__, muduo::Logger::INFO, __FUNCTION__).stream()
-#define LOG_WARN if (muduo::Logger::logLevel() <= muduo::Logger::INFO) \
-   muduo::Logger(__FILE__, __LINE__, muduo::Logger::WARN, __FUNCTION__).stream()
-#define LOG_ERROR if (muduo::Logger::logLevel() <= muduo::Logger::INFO) \
-   muduo::Logger(__FILE__, __LINE__, muduo::Logger::ERROR, __FUNCTION__).stream()
-#define LOG_FATAL if (muduo::Logger::logLevel() <= muduo::Logger::INFO) \
-   muduo::Logger(__FILE__, __LINE__, muduo::Logger::FATAL, __FUNCTION__).stream()
+#define LOG_TRACE if (leaf::Logger::logLevel() <= leaf::Logger::TRACE) \
+   leaf::Logger(__FILE__, __LINE__, leaf::Logger::TRACE, __FUNCTION__).stream()
+#define LOG_DEBUG if (leaf::Logger::logLevel() <= leaf::Logger::DEBUG) \
+   leaf::Logger(__FILE__, __LINE__, leaf::Logger::DEBUG, __FUNCTION__).stream()
+#define LOG_INFO if (leaf::Logger::logLevel() <= leaf::Logger::INFO) \
+   leaf::Logger(__FILE__, __LINE__, leaf::Logger::INFO, __FUNCTION__).stream()
+#define LOG_WARN if (leaf::Logger::logLevel() <= leaf::Logger::INFO) \
+   leaf::Logger(__FILE__, __LINE__, leaf::Logger::WARN, __FUNCTION__).stream()
+#define LOG_ERROR if (leaf::Logger::logLevel() <= leaf::Logger::INFO) \
+   leaf::Logger(__FILE__, __LINE__, leaf::Logger::ERROR, __FUNCTION__).stream()
+#define LOG_FATAL if (leaf::Logger::logLevel() <= leaf::Logger::INFO) \
+   leaf::Logger(__FILE__, __LINE__, leaf::Logger::FATAL, __FUNCTION__).stream()
 // fixme bool should not be parameter 
-#define LOG_SYSERR if (muduo::Logger::logLevel() <= muduo::Logger::INFO) \
-   muduo::Logger(__FILE__, __LINE__, false).stream()  
-#define LOG_SYSFATAL if (muduo::Logger::logLevel() <= muduo::Logger::INFO) \
-   muduo::Logger(__FILE__, __LINE__, true).stream()
+#define LOG_SYSERR if (leaf::Logger::logLevel() <= leaf::Logger::INFO) \
+   leaf::Logger(__FILE__, __LINE__, false).stream()  
+#define LOG_SYSFATAL if (leaf::Logger::logLevel() <= leaf::Logger::INFO) \
+   leaf::Logger(__FILE__, __LINE__, true).stream()
 
  const char* strerror_tl(int savedErrno);
 
@@ -110,7 +110,7 @@ class Logger {
  // initializer lists.
 
 #define CHECK_NOTNULL(val) \
- ::muduo::CheckNotNull(__FILE__, __LINE__, "'" #val "' Must be non NULL ", (val))
+ ::leaf::CheckNotNull(__FILE__, __LINE__, "'" #val "' Must be non NULL ", (val))
 
  // A small helper for CHECK_NOTNULL().
  template <typename T>

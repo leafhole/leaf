@@ -6,9 +6,9 @@
 
 #include <boost/operators.hpp>
 
-namespace muduo {
+namespace leaf {
 
-class Timestamp : public muduo::copyable,
+class Timestamp : public leaf::copyable,
   public boost::less_than_comparable<Timestamp> {
  public:
 
@@ -77,7 +77,7 @@ class Timestamp : public muduo::copyable,
  
 
  
-} // end of muduo
+} // end of leaf
 
 
 

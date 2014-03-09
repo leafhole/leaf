@@ -5,7 +5,7 @@
 #include <assert.h>
 #include <pthread.h>
 
-namespace muduo{
+namespace leaf{
 template <typename T>
 class ThreadLocalSingleton : boost::noncopyable {
   public
@@ -59,7 +59,7 @@ template<typename T>
 
 template<typename T>
   typename ThreadLocalSingleton<T>::Deleter ThreadLocalSingleton<T>::deleter_;  
-} // end of namespace muduo
+} // end of namespace leaf
 
 
 

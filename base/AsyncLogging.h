@@ -48,7 +48,7 @@ class AsyncLogging : boost::noncopyable {
 
   void threadFunc();
 
-  typedef muduo::detail::FixedBuffer<muduo::detail::kLargeBuffer> Buffer;
+  typedef leaf::detail::FixedBuffer<leaf::detail::kLargeBuffer> Buffer;
   typedef boost::ptr_vector<Buffer> BufferVector;
   typedef BufferVector::auto_type BufferPtr;
 
@@ -56,10 +56,10 @@ class AsyncLogging : boost::noncopyable {
   bool running_;
   string basename_;
   size_t rollSize_;
-  muduo::Thread thread_;
-  muduo::CountDownLatch latch_;
-  muduo::MutexLock mutex_;
-  muduo::Condition cond_;
+  leaf::Thread thread_;
+  leaf::CountDownLatch latch_;
+  leaf::MutexLock mutex_;
+  leaf::Condition cond_;
   BufferPtr currentBuffer_; // buffer in use, writting...
   BufferPtr nextBuffer_;    // next buffer waitting written now
   BufferVector buffers_;   // buffers with data. next step will be swap(buffersToWrite)
@@ -68,23 +68,23 @@ class AsyncLogging : boost::noncopyable {
 
 /*
   
-#define ALOG_TRACE if (muduo::Logger::logLevel() <= muduo::Logger::TRACE) \
-   muduo::Logger(__FILE__, __LINE__, muduo::Logger::TRACE, __FUNCTION__).stream()
-#define ALOG_DEBUG if (muduo::Logger::logLevel() <= muduo::Logger::DEBUG) \
-   muduo::Logger(__FILE__, __LINE__, muduo::Logger::DEBUG, __FUNCTION__).stream()
-#define ALOG_INFO if (muduo::Logger::logLevel() <= muduo::Logger::INFO) \
-   muduo::Logger(__FILE__, __LINE__, muduo::Logger::INFO, __FUNCTION__).stream()
-#define ALOG_WARN if (muduo::Logger::logLevel() <= muduo::Logger::INFO) \
-   muduo::Logger(__FILE__, __LINE__, muduo::Logger::WARN, __FUNCTION__).stream()
-#define ALOG_ERROR if (muduo::Logger::logLevel() <= muduo::Logger::INFO) \
-   muduo::Logger(__FILE__, __LINE__, muduo::Logger::ERROR, __FUNCTION__).stream()
-#define ALOG_FATAL if (muduo::Logger::logLevel() <= muduo::Logger::INFO) \
-   muduo::Logger(__FILE__, __LINE__, muduo::Logger::FATAL, __FUNCTION__).stream()
+#define ALOG_TRACE if (leaf::Logger::logLevel() <= leaf::Logger::TRACE) \
+   leaf::Logger(__FILE__, __LINE__, leaf::Logger::TRACE, __FUNCTION__).stream()
+#define ALOG_DEBUG if (leaf::Logger::logLevel() <= leaf::Logger::DEBUG) \
+   leaf::Logger(__FILE__, __LINE__, leaf::Logger::DEBUG, __FUNCTION__).stream()
+#define ALOG_INFO if (leaf::Logger::logLevel() <= leaf::Logger::INFO) \
+   leaf::Logger(__FILE__, __LINE__, leaf::Logger::INFO, __FUNCTION__).stream()
+#define ALOG_WARN if (leaf::Logger::logLevel() <= leaf::Logger::INFO) \
+   leaf::Logger(__FILE__, __LINE__, leaf::Logger::WARN, __FUNCTION__).stream()
+#define ALOG_ERROR if (leaf::Logger::logLevel() <= leaf::Logger::INFO) \
+   leaf::Logger(__FILE__, __LINE__, leaf::Logger::ERROR, __FUNCTION__).stream()
+#define ALOG_FATAL if (leaf::Logger::logLevel() <= leaf::Logger::INFO) \
+   leaf::Logger(__FILE__, __LINE__, leaf::Logger::FATAL, __FUNCTION__).stream()
 // fixme bool should not be parameter 
-#define ALOG_SYSERR if (muduo::Logger::logLevel() <= muduo::Logger::INFO) \
-   muduo::Logger(__FILE__, __LINE__, false).stream()  
-#define ALOG_SYSFATAL if (muduo::Logger::logLevel() <= muduo::Logger::INFO) \
-   muduo::Logger(__FILE__, __LINE__, true).stream()
+#define ALOG_SYSERR if (leaf::Logger::logLevel() <= leaf::Logger::INFO) \
+   leaf::Logger(__FILE__, __LINE__, false).stream()  
+#define ALOG_SYSFATAL if (leaf::Logger::logLevel() <= leaf::Logger::INFO) \
+   leaf::Logger(__FILE__, __LINE__, true).stream()
 
 */
  

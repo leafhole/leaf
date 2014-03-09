@@ -4,9 +4,9 @@
 #include <base/LogFile.h>
 using std::cout;
 using std::endl;
-using muduo::LogStream;
-using muduo::LogFile;
-//using muduo::LogStream::Buffer;
+using leaf::LogStream;
+using leaf::LogFile;
+//using leaf::LogStream::Buffer;
 
 boost::scoped_ptr<LogFile> g_logFile;
 

@@ -4,7 +4,7 @@
 #include <base/Atomic.h>
 //using std::cout;
 //using std::endl;
-using muduo::AtomicInt32;
+using leaf::AtomicInt32;
 
 void breakhere(){};
 

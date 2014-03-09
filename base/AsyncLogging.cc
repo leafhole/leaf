@@ -7,7 +7,7 @@
 #include <sys/time.h>
 using namespace std;
 
-using namespace muduo;
+using namespace leaf;
 using leaf::AsyncLogging;
 
 AsyncLogging::AsyncLogging(const string& basename,
@@ -31,7 +31,7 @@ AsyncLogging::AsyncLogging(const string& basename,
 }
 
 void AsyncLogging::append(const char* logline, int len) {
-  muduo::MutexLockGuard lock(mutex_);
+  leaf::MutexLockGuard lock(mutex_);
   if (currentBuffer_->avail() > len) {
     currentBuffer_->append(logline, len);
   } else {

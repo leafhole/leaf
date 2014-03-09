@@ -9,7 +9,7 @@
 
 #include <boost/static_assert.hpp>
 
-using namespace muduo;
+using namespace leaf;
 
 BOOST_STATIC_ASSERT(sizeof(Timestamp) == sizeof(int64_t));
 

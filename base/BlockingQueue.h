@@ -12,7 +12,7 @@
 // capacity with no limit. will never full
 
 
-namespace muduo {
+namespace leaf {
 template<typename T>
 class BlockingQueue : boost::noncopyable {
  public:
@@ -50,7 +50,7 @@ class BlockingQueue : boost::noncopyable {
   
 }; // end of class BlockingQueue
 
-} // end of namespace muduo
+} // end of namespace leaf
 
 
 #endif

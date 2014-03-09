@@ -12,7 +12,7 @@
 ///
 /// The most common stuffs.
 ///
-namespace muduo
+namespace leaf
 {
 
 #ifdef MUDUO_STD_STRING

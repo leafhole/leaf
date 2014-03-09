@@ -30,7 +30,7 @@ __END_DECLS
 
 #endif // CHECK_PTHREAD_RETURN_VALUE
 
-namespace muduo {
+namespace leaf {
 
 // Use as data member of a class, eg.
 //
@@ -53,7 +53,7 @@ class MutexLock : boost::noncopyable {
   ~MutexLock() {
     assert(holder_ == 0);
     if (holder_ != 0 ) {
-      throw muduo::Exception("oops");
+      throw leaf::Exception("oops");
     }
     MCHECK(pthread_mutex_destroy(&mutex_));
   }

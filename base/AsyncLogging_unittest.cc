@@ -1,12 +1,10 @@
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 #include <iostream>
 #include <base/LogFile.h>
 #include <base/AsyncLogging.h>
 #include <sys/time.h>
-//using std::cout;
-//using std::endl;
 
-using namespace muduo;
+using namespace leaf;
 using leaf::AsyncLogging;
 
 void breakhere(){};

@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <pthread.h>
 
-namespace muduo {
+namespace leaf {
 namespace CurrentThread {
   // interval
   extern __thread int t_cachedTid;

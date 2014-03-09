@@ -9,7 +9,7 @@
 
 void print() {
   //fprintf(stderr, "%s : %d\n", __FUNCTION__, __LINE__);  
-  printf("tid=%d\n", muduo::CurrentThread::tid());
+  printf("tid=%d\n", leaf::CurrentThread::tid());
 }
 
 void printString(const std::string& str) {
@@ -20,7 +20,7 @@ void printString(const std::string& str) {
 
 void test(int maxSize) {
   LOG_WARN << "Test ThreadPool with max queue size = " << maxSize;
-  muduo::ThreadPool pool("MainThreadPool");
+  leaf::ThreadPool pool("MainThreadPool");
   pool.setMaxQueueSize(maxSize);
   pool.start(5);
 
@@ -36,9 +36,9 @@ void test(int maxSize) {
 
 
   int countDownNum = 1000;
-  muduo::CountDownLatch latch(countDownNum);
+  leaf::CountDownLatch latch(countDownNum);
   for (int i = 0; i < countDownNum; i ++) {
-    pool.run(boost::bind(&muduo::CountDownLatch::countDown,
+    pool.run(boost::bind(&leaf::CountDownLatch::countDown,
 			 &latch));
   }
   latch.wait();

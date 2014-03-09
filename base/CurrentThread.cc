@@ -7,9 +7,6 @@
 #include <sys/syscall.h>
 #endif
 
-//using namespace muduo;
-
-
 namespace detail
 {
 
@@ -28,7 +25,7 @@ pid_t gettid() {
 
 
 
-namespace muduo {
+namespace leaf {
   namespace CurrentThread {
     __thread int t_cachedTid;
     __thread char t_tidString[32];
@@ -37,7 +34,7 @@ namespace muduo {
 }
 
 
-void muduo::CurrentThread::cacheTid()
+void leaf::CurrentThread::cacheTid()
 {
   if (t_cachedTid == 0)
   {
@@ -47,12 +44,12 @@ void muduo::CurrentThread::cacheTid()
   }
 }
 
-bool muduo::CurrentThread::isMainThread()
+bool leaf::CurrentThread::isMainThread()
 {
   return tid() == ::getpid();
 }
 
-void muduo::CurrentThread::sleepUsec(int64_t usec)
+void leaf::CurrentThread::sleepUsec(int64_t usec)
 {
   struct timespec ts = { 0, 0 };
   ts.tv_sec = static_cast<time_t>(usec / Timestamp::kMicroSecondsPerSecond);

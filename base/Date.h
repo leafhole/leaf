@@ -8,7 +8,7 @@ struct tm;
 
 namespace leaf {
 
-class Date :  public muduo::copyable {
+class Date :  public leaf::copyable {
   public:
     struct YearMonthDay {
       int year; // [1900..2500]
@@ -90,7 +90,7 @@ inline bool operator == (Date x, Date y) {
   return x.julianDayNumber() == y.julianDayNumber();
 }
  
-} // end of namespace muduo
+} // end of namespace leaf
 
 
 #endif // end of #ifndef BASE_DATE_H

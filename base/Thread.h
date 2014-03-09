@@ -9,7 +9,7 @@
 #include <boost/shared_ptr.hpp>
 #include <pthread.h>
 
-namespace muduo {
+namespace leaf {
 class Thread : boost::noncopyable {
  public:
   typedef boost::function<void ()> ThreadFunc;
@@ -41,6 +41,6 @@ class Thread : boost::noncopyable {
   static AtomicInt32 numCreated_;  
 }; // end of class Thread
 
-} // end of namespace muduo
+} // end of namespace leaf
 
 #endif // BASE_THREAD_H

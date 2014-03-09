@@ -5,7 +5,7 @@
 #include <base/Mutex.h>
 
 
-namespace muduo {
+namespace leaf {
 
 class Condition : boost::noncopyable {
  public:
@@ -40,7 +40,7 @@ class Condition : boost::noncopyable {
   pthread_cond_t pcond_;
 }; // end of class Condition
 
-}  // end of namespace muduo
+}  // end of namespace leaf
 
 
 

@@ -5,9 +5,9 @@
 #include <base/Logging.h>
 using std::cout;
 using std::endl;
-using muduo::LogStream;
-using muduo::LogFile;
-//using muduo::LogStream::Buffer;
+using leaf::LogStream;
+using leaf::LogFile;
+//using leaf::LogStream::Buffer;
 
 int g_total;
 FILE* g_file;
@@ -23,21 +23,21 @@ void dumpOutput(const char* msg, int len) {
 }
 
 void bench(const char* type) {
-  muduo::Logger::setOutput(dumpOutput);
-  muduo::Timestamp start(muduo::Timestamp::now());
+  leaf::Logger::setOutput(dumpOutput);
+  leaf::Timestamp start(leaf::Timestamp::now());
   g_total = 0;
 
   int n = 1000 * 1000;
   const bool kLongLog = false;
-  muduo::string empty = " ";
-  muduo::string longStr(3000, 'X');
+  leaf::string empty = " ";
+  leaf::string longStr(3000, 'X');
   longStr += " ";
   for (int i = 0; i < n; i ++) {
     LOG_INFO << "Hello 0123456789" << " abcdefghijklmnopqrstuvwxyz"
 	     << (kLongLog ? longStr : empty)
 	     << i;
   }
-  muduo::Timestamp end(muduo::Timestamp::now());
+  leaf::Timestamp end(leaf::Timestamp::now());
   double seconds = timeDifference(end, start);
   printf("%12s: %f seconds, %d bytes, %10.2f msg/s, %.2f MiB/s\n",
 	 type, seconds, g_total, n / seconds, g_total / seconds / (1024 * 1024));    
@@ -67,13 +67,13 @@ TEST(LOGINGTEST, output) {
   
   g_file = NULL;
   //setbuffer(g_, buffer, sizeof buffer);
-  g_logFile.reset(new muduo::LogFile("test_log_stat", 500 * 1000 * 1000, LogFile::SINGLE_THREAD));
+  g_logFile.reset(new leaf::LogFile("test_log_stat", 500 * 1000 * 1000, LogFile::SINGLE_THREAD));
   bench("test_log_stat");
 
 
   g_file = NULL;
   //setbuffer(g_, buffer, sizeof buffer);
-  g_logFile.reset(new muduo::LogFile("test_log_stat_mt", 500 * 1000 * 1000, LogFile::MULTI_THREAD));
+  g_logFile.reset(new leaf::LogFile("test_log_stat_mt", 500 * 1000 * 1000, LogFile::MULTI_THREAD));
   bench("test_log_stat");
   
 }

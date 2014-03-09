@@ -4,7 +4,7 @@
 #include <boost/noncopyable.hpp>
 #include <string.h>
 
-namespace muduo {
+namespace leaf {
 
 namespace FileUtil {
   class SmallFile : boost::noncopyable {

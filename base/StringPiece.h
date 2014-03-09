@@ -48,7 +48,7 @@
 #include <string>
 #endif
 
-namespace muduo {
+namespace leaf {
 
 class StringPiece {
   typedef StringPiece self;
@@ -158,7 +158,7 @@ class StringPiece {
   }
 };
 
-}   // namespace muduo
+}   // namespace leaf
 
 // ------------------------------------------------------------------
 // Functions used to create STL containers that use StringPiece
@@ -169,7 +169,7 @@ class StringPiece {
 
 #ifdef HAVE_TYPE_TRAITS
 // This makes vector<StringPiece> really fast for some STL implementations
-template<> struct __type_traits<muduo::StringPiece> {
+template<> struct __type_traits<leaf::StringPiece> {
   typedef __true_type    has_trivial_default_constructor;
   typedef __true_type    has_trivial_copy_constructor;
   typedef __true_type    has_trivial_assignment_operator;
@@ -179,6 +179,6 @@ template<> struct __type_traits<muduo::StringPiece> {
 #endif
 
 // allow StringPiece to be logged
-std::ostream& operator<<(std::ostream& o, const muduo::StringPiece& piece);
+std::ostream& operator<<(std::ostream& o, const leaf::StringPiece& piece);
 
 #endif  // MUDUO_BASE_STRINGPIECE_H

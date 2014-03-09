@@ -4,7 +4,7 @@
 #include <boost/noncopyable.hpp>
 #include <stdint.h>
 
-namespace muduo {
+namespace leaf {
 namespace detail{
 template<typename T>
   class AtomicIntegerT : boost::noncopyable {
@@ -69,7 +69,7 @@ template<typename T>
 
  typedef detail::AtomicIntegerT<int32_t> AtomicInt32;
  typedef detail::AtomicIntegerT<int64_t> AtomicInt64;
-} // end of namespace muduo
+} // end of namespace leaf
     
 
 #endif

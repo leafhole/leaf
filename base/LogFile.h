@@ -7,7 +7,7 @@
 #include <boost/noncopyable.hpp>
 #include <boost/scoped_ptr.hpp>
 
-namespace muduo {
+namespace leaf {
 
 class LogFile : boost::noncopyable {
  public:

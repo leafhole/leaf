@@ -6,7 +6,7 @@
 
 #include <boost/noncopyable.hpp>
 
-namespace muduo {
+namespace leaf {
 class CountDownLatch : boost::noncopyable {
  public:
   explicit CountDownLatch(int count);
@@ -18,7 +18,7 @@ class CountDownLatch : boost::noncopyable {
   Condition condition_;
   int count_;
 }; // end of class CountDownLatch
-} // end of namespace muduo 
+} // end of namespace leaf 
   
   
     

@@ -6,7 +6,7 @@
 #include <stdio.h>
 
 using namespace std;
-using namespace muduo;
+using namespace leaf;
 
 ThreadPool::ThreadPool(const string& name)
   : mutex_(),
@@ -30,7 +30,7 @@ void ThreadPool::start(int numThreads) {
   for (int i = 0; i < numThreads; i ++) {
     char id[32];
     snprintf(id, sizeof id, "%d", i);
-    threads_.push_back(new muduo::Thread(
+    threads_.push_back(new leaf::Thread(
 					 boost::bind(&ThreadPool::runInThread, this), name_ + id));
     threads_[i].start();
   }
@@ -44,7 +44,7 @@ void ThreadPool::stop() {
   }
   for_each(threads_.begin(),
 	   threads_.end(),
-	   boost::bind(&muduo::Thread::join, _1));
+	   boost::bind(&leaf::Thread::join, _1));
 }
 
 void ThreadPool::run(const Task& task) {
@@ -94,7 +94,7 @@ void ThreadPool::runInThread() {
 	task();
       }
     }
-    fprintf(stderr, "%d run In Thread done\n", muduo::CurrentThread::tid());
+    fprintf(stderr, "%d run In Thread done\n", leaf::CurrentThread::tid());
 
   } catch (const Exception& ex) {
     fprintf(stderr, "exception caught in ThreadPool %s\n",

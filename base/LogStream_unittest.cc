@@ -3,8 +3,8 @@
 #include <iostream>
 using std::cout;
 using std::endl;
-using muduo::LogStream;
-//using muduo::LogStream::Buffer;
+using leaf::LogStream;
+//using leaf::LogStream::Buffer;
 int Factorial(int n) {
   int result = 1;
   for (int i = 1; i <= n; i++) {

@@ -8,8 +8,8 @@
 #include <string.h>
 #include <stdio.h>
 
-using namespace muduo;
-using namespace muduo::detail;
+using namespace leaf;
+using namespace leaf::detail;
 
 /*
 #if define(__clang__)
@@ -20,7 +20,7 @@ using namespace muduo::detail;
 */
 //pragma GCC diagnostic ignored "-Wtype-limits"
 /**/
-namespace muduo
+namespace leaf
 {
 
 namespace detail

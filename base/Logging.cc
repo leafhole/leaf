@@ -11,7 +11,7 @@
 
 #include <sstream>
 
-namespace muduo {
+namespace leaf {
 
 __thread char t_errnobuf[512];
 __thread char t_time[32];
@@ -85,7 +85,7 @@ __thread time_t t_lastSecond;
   
 }
 
-using namespace muduo;
+using namespace leaf;
 Logger::Impl::Impl(LogLevel level, int savedErrno, const SourceFile& file, int line )
   : time_(Timestamp::now()),
     stream_(),

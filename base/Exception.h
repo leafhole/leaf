@@ -4,7 +4,7 @@
 #include <base/Types.h>
 #include <exception>
 
-namespace muduo {
+namespace leaf {
 
 class Exception : public std::exception {
  public:
@@ -21,7 +21,7 @@ class Exception : public std::exception {
   string stack_;
 };
 
-} // end of namespace muduo
+} // end of namespace leaf
 
 
 

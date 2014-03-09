@@ -2,11 +2,11 @@ all: logstream_unittest logfile_unittest logging_unittest atomic_unittest backtr
 
 clean:
 	rm -f *.o
-	rm -f logstream_unittest logfile_unittest logging_unittest backtrace_unittest thread_unittest atomic_unittest  threadpool_unittest
+	rm -f logstream_unittest logfile_unittest logging_unittest backtrace_unittest thread_unittest atomic_unittest  threadpool_unittest asynclogging_main asynclogging_unittest
 
 CC = gcc
 
-INCLUDES = -I ../ -I ../../googletest-read-only/include/ -I ../../
+INCLUDES = -I ../ -I ../../googletest-read-only/include/ -I ../../ 
 
 LIBFLAG = -L ../../googletest-read-only/ -lgtest -lgtest_main -lstdc++ -lpthread
 
@@ -15,6 +15,8 @@ LIBFLAG = -L ../../googletest-read-only/ -lgtest -lgtest_main -lstdc++ -lpthread
 UNAME := $(shell uname)
 
 ifeq ($(UNAME), FreeBSD)
+CFLAGS = $(INCLUDES) -DMUDUO_STD_STRING -D__MACH__ -g -O0
+else ifeq ($(UNAME), Darwin)
 CFLAGS = $(INCLUDES) -DMUDUO_STD_STRING -D__MACH__ -g -O0
 else ifeq ($(UNAME), Linux)
 CFLAGS = $(INCLUDES) -DMUDUO_STD_STRING -D__LINUX__ -g -O0

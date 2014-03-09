@@ -8,7 +8,7 @@
 #include <boost/noncopyable.hpp>
 #include <assert.h>
 
-using muduo::MutexLockGuard;
+using leaf::MutexLockGuard;
 
 namespace leaf {
 template <typename T>
@@ -66,9 +66,9 @@ class BoundedBlockingQueue : boost::noncopyable {
   }
 
  private:
-  mutable muduo::MutexLock mutex_;
-  muduo::Condition notEmpty_;
-  muduo::Condition notFull_;
+  mutable leaf::MutexLock mutex_;
+  leaf::Condition notEmpty_;
+  leaf::Condition notFull_;
   boost::circular_buffer<T> queue_;
 
 }; // end of class BoundedBlockingQueue

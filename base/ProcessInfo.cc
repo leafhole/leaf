@@ -11,7 +11,7 @@
 #include <unistd.h>
 #include <sys/resource.h>
 
-namespace muduo {
+namespace leaf {
 
 namespace detail {
   
@@ -46,8 +46,8 @@ __thread int t_numOpenedFiles = 0;
 }
 }
 
-using namespace muduo;
-using namespace muduo::detail;
+using namespace leaf;
+using namespace leaf::detail;
 
 pid_t ProcessInfo::pid() {
   return ::getpid();
