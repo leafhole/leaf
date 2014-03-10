@@ -14,6 +14,8 @@
 
 #include <signal.h>
 
+#include <sys/eventfd.h>
+
 using namespace leaf;
 using namespace leaf::net;
 
@@ -24,8 +26,8 @@ __thread EventLoop* t_loopInThisThread = 0;
 const int kPollTimeMs = 10 * 1000;
 
 int createEventfd() {
-  //  int eventfd = ::eventfd(0, EFD_NONBLOCK | EFD_CLOEXEC);
-  int eventfd = 0;
+  int eventfd = ::eventfd(0, EFD_NONBLOCK | EFD_CLOEXEC);
+  //int eventfd = 0;
   if (eventfd < 0) {
     LOG_SYSERR << "Failed in eventfd";
     abort();

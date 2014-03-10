@@ -1,3 +1,5 @@
+set(CMAKE_BUILD_TYPE Debug)
+
 set(base_SRCS
   AsyncLogging.cc
   Condition.cc

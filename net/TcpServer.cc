@@ -85,7 +85,7 @@ void TcpServer::newConnection(int sockfd, const InetAddress& peerAddr) {
   ioLoop->runInLoop(boost::bind(&TcpConnection::connectEstablished, conn));
 }
 
-void TcpServer::removeConnection(const TcpConnectionPtr& conn) {
+void TcpServer::removeConnectionInLoop(const TcpConnectionPtr& conn) {
   loop_->assertInLoopThread();
   LOG_INFO << "TcpServer::removeCOnnectionInLoop [" << name_
 	   << "] - connection " << conn->name();
@@ -94,4 +94,10 @@ void TcpServer::removeConnection(const TcpConnectionPtr& conn) {
   assert(n == 1);
   EventLoop* ioLoop = conn->getLoop();
   ioLoop->queueInLoop(boost::bind(&TcpConnection::connectDestroyed, conn)); 
+}
+
+void TcpServer::removeConnection(const TcpConnectionPtr& conn)
+{
+  // FIXME: unsafe
+  loop_->runInLoop(boost::bind(&TcpServer::removeConnectionInLoop, this, conn));
 }

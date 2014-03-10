@@ -1,5 +1,5 @@
-#ifndef MUDUO_EXAMPLES_SIMPLE_ECHO_ECHO_H
-#define MUDUO_EXAMPLES_SIMPLE_ECHO_ECHO_H
+#ifndef LEAF_EXAMPLES_SIMPLE_ECHO_ECHO_H
+#define LEAF_EXAMPLES_SIMPLE_ECHO_ECHO_H
 
 #include <net/TcpServer.h>
 
@@ -22,4 +22,4 @@ class EchoServer
   leaf::net::TcpServer server_;
 };
 
-#endif  // MUDUO_EXAMPLES_SIMPLE_ECHO_ECHO_H
+#endif  // LEAF_EXAMPLES_SIMPLE_ECHO_ECHO_H

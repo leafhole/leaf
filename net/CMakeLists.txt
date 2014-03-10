@@ -1,3 +1,4 @@
+set(CMAKE_BUILD_TYPE Debug)
 set(net_SRCS
   Acceptor.cc
   Buffer.cc
