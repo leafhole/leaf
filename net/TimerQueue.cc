@@ -33,6 +33,7 @@ int createTimerfd()
   {
     LOG_SYSFATAL << "Failed in timerfd_create";
   }
+  LOG_TRACE << "timerfd " << timerfd;
   return timerfd;
 }
 

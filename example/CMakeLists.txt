@@ -12,3 +12,5 @@ target_link_libraries(simple_echo leaf_net leaf_base pthread)
 
 add_executable(simple_discard discard/discard.cc discard/main.cc)
 target_link_libraries(simple_discard leaf_net leaf_base pthread)
+
+add_subdirectory(curl)

@@ -85,7 +85,7 @@ void Channel::handleEventWithGuard(Timestamp receiveTime) {
 
 leaf::string Channel::reventsToString() const {
   std::ostringstream oss;
-  oss << fd_ << ": ";
+  oss << fd_ << " : " << revents_ << " : ";
   if (revents_ & POLLIN) {
     oss << "IN ";
   }

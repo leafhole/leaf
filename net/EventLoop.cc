@@ -66,6 +66,7 @@ EventLoop::EventLoop()
     wakeupChannel_(new Channel(this, wakeupFd_)),
     currentActiveChannel_(NULL) {
 
+  LOG_TRACE << "wakeupFd " << wakeupFd_;
   LOG_DEBUG << "EventLoop create " << this << " in thread " << threadId_;
   /*
   if (::socketpair(AF_UNIX, SOCK_STREAM, 0, wakeupFd_) < 0) {
@@ -102,6 +103,7 @@ void EventLoop::loop() {
   LOG_TRACE << "EventLoop " << this << "start looping";
 
   while (not quit_) {
+    LOG_TRACE <<"loop round start";
     activeChannels_.clear();
     pollReturnTime_ = poller_->poll(kPollTimeMs,
 				   &activeChannels_);
@@ -120,6 +122,7 @@ void EventLoop::loop() {
     currentActiveChannel_ = NULL;
     eventHandling_ = false;
     doPendingFunctors();
+    LOG_TRACE <<"=================================";    
   }
 
   LOG_TRACE << "Eventloop " << this << " stop looping";
