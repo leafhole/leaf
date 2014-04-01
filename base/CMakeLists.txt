@@ -23,7 +23,9 @@ target_link_libraries(leaf_base pthread rt)
 install(TARGETS leaf_base DESTINATION lib)
 
 INCLUDE_DIRECTORIES("../", "../base/")
+INCLUDE_DIRECTORIES("../../googletest-read-only/include/")
 
 file(GLOB HEADERS "*.h")
 install(FILES ${HEADERS} DESTINATION include/leaf/base)
 
+add_subdirectory(tests)

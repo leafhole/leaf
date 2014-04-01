@@ -92,6 +92,7 @@ int SmallFile::readToBuffer(int* size) {
   return err;
 }
 
+
 template int FileUtil::readFile(StringPiece filename,
 				int maxSize,
 				string* content,
@@ -99,7 +100,7 @@ template int FileUtil::readFile(StringPiece filename,
 
 template int FileUtil::SmallFile::readToString(
 				     int maxSize,
-				     string* content,
+				     leaf::string* content,
 				     int64_t*, int64_t*, int64_t*);
 
 #ifndef LEAF_STD_STRING
@@ -112,6 +113,5 @@ template int SmallFile::readToString(
 				     int maxSize,
 				     std::string* content,
 				     int64_t*, int64_t*, int64_t*);
+
 #endif
-
-

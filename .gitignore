@@ -2,3 +2,8 @@
 *.o
 *.hg
 *.ccg
+*.cmake
+Makefile
+*.log
+CmakeC*.txt
+CMakeFiles
