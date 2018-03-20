@@ -1,4 +1,7 @@
+cmake_minimum_required(VERSION 3.5)
 set(CMAKE_BUILD_TYPE Debug)
+set(TOP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../")
+
 
 set(base_SRCS
   AsyncLogging.cc
@@ -22,10 +25,10 @@ target_link_libraries(leaf_base pthread rt)
 
 install(TARGETS leaf_base DESTINATION lib)
 
-INCLUDE_DIRECTORIES("../", "../base/")
-INCLUDE_DIRECTORIES("../../googletest-read-only/include/")
+INCLUDE_DIRECTORIES("${TOP_DIR}/" , "${TOP_DIR}/base/")
+#INCLUDE_DIRECTORIES("../../googletest-read-only/include/")
 
 file(GLOB HEADERS "*.h")
 install(FILES ${HEADERS} DESTINATION include/leaf/base)
 
-add_subdirectory(tests)
+#add_subdirectory(tests)

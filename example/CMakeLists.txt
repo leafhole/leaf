@@ -1,6 +1,6 @@
 set(CMAKE_BUILD_TYPE Debug)
 
-INCLUDE_DIRECTORIES("../", "../base/", "../net/")
+INCLUDE_DIRECTORIES( "../" , "../base/" , "../net/" , "./" )
 LINK_DIRECTORIES(${CMAKE_BINARY_DIR}/../net/)
 LINK_DIRECTORIES(${CMAKE_BINARY_DIR}/../base/)
 

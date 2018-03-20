@@ -1,3 +1,5 @@
+cmake_minimum_required(VERSION 3.5)
+set(TOP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../")
 set(CMAKE_BUILD_TYPE Debug)
 set(net_SRCS
   Acceptor.cc
@@ -24,7 +26,7 @@ add_library(leaf_net ${net_SRCS})
 target_link_libraries(leaf_net leaf_base)
 
 install(TARGETS leaf_net DESTINATION lib)
-INCLUDE_DIRECTORIES("../", "../base/")
+INCLUDE_DIRECTORIES("${TOP_DIR}" , "${TOP_DIR}/base/")
 
 set(HEADERS
   Buffer.h
